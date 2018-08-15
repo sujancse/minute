@@ -5,16 +5,31 @@
  */
 class Router
 {
-    protected $routes = [];
+    protected $routes = [
+        'GET' => [],
+        'POST' => [],
+    ];
 
     /**
-     * Assign array of routes to $routes.
+     * Fetch the uri and controller for GET request.
      *
-     * @param  array
+     * @param  string
+     * @param  file
      */
-    public function define($routes)
+    public function get($uri, $controller)
     {
-        $this->routes = $routes;
+        $this->routes['GET'][$uri] = $controller;
+    }
+
+    /**
+     * Fetch the uri and controller for POST request.
+     *
+     * @param  string
+     * @param  file
+     */
+    public function post($uri, $controller)
+    {
+        $this->routes['POST'][$uri] = $controller;
     }
 
     /**
@@ -40,10 +55,10 @@ class Router
      *
      * @return file
      */
-    public function direct($uri)
+    public function direct($uri, $requestType)
     {
-        if (array_key_exists($uri, $this->routes)) {
-            return $this->routes[$uri];
+        if (array_key_exists($uri, $this->routes[$requestType])) {
+            return $this->routes[$requestType][$uri];
         }
 
         throw new Exception('No routes found with the uri '.$uri, 404);
