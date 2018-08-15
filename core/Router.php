@@ -1,17 +1,29 @@
 <?php
 
 /**
- * Route handling.
+ * Route handler.
  */
 class Router
 {
     protected $routes = [];
 
+    /**
+     * Assign array of routes to $routes.
+     *
+     * @param  array
+     */
     public function define($routes)
     {
         $this->routes = $routes;
     }
 
+    /**
+     * Load the routes file.
+     *
+     * @param  $file
+     *
+     * @return $router
+     */
     public static function load($file)
     {
         $router = new static();
@@ -21,6 +33,13 @@ class Router
         return $router;
     }
 
+    /**
+     * Direct the traffic to specified uri.
+     *
+     * @param  uri
+     *
+     * @return file
+     */
     public function direct($uri)
     {
         if (array_key_exists($uri, $this->routes)) {

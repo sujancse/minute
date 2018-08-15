@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Application array.
+ *
+ * @var array
+ */
 $app = [];
 
 require 'core/functions.php';
