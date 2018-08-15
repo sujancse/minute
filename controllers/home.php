@@ -1,7 +1,7 @@
 <?php
 
-$todos = $app['database']->getAll('todos');
+$todos = App::get('database')->getAll('todos');
 
-$users = $app['database']->getAll('users');
+$users = App::get('database')->getAll('users');
 
 require 'views/index.view.php';
