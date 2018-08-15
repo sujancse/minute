@@ -40,7 +40,7 @@ class QueryBuilder
         $sql = sprintf('insert into %s (%s) values (%s)',
             $table,
             implode(', ', array_keys($parameters)),
-            implode(', ', $this->paramsToPlaceholder($parameters))
+            $this->paramsToPlaceholder($parameters)
         );
 
         try {
@@ -57,12 +57,14 @@ class QueryBuilder
      *
      * @param  array
      *
-     * @return array
+     * @return string
      */
     public function paramsToPlaceholder($parameters)
     {
-        return array_map(function ($param) {
+        $params = array_map(function ($param) {
             return ":{$param}";
         }, array_keys($parameters));
+
+        return implode(', ', $params);
     }
 }
