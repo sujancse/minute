@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 /**
  * Application dependency injection container.
  */

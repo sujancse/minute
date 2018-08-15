@@ -3,7 +3,7 @@
 /**
  * Get the data die and dump.
  *
- * @param  mixed
+ * @param  $data
  *
  * @return mixed
  */
@@ -26,7 +26,7 @@ function view($file, $data = [])
 {
     extract($data);
 
-    return require "views/$file.view.php";
+    return require "app/views/$file.view.php";
 }
 
 /**

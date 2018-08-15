@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 /**
  * Request data from user.
  */

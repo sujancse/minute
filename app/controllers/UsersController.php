@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use Core\App;
+
 /**
  * Users controller.
  */

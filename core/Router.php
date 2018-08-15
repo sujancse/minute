@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 /**
  * Route handler.
  */
@@ -79,6 +81,7 @@ class Router
      */
     public function callAction($controller, $action)
     {
+        $controller = "App\\Controllers\\{$controller}";
         $controller = new $controller();
 
         if (!method_exists($controller, $action)) {
