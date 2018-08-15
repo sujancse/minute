@@ -1,9 +1,7 @@
 <?php
 
-require 'functions.php';
+$query = require 'bootstrap.php';
 
-$pdo = connectToDb();
-
-$todos = getAll($pdo);
+$todos = $query->getAll('todos');
 
 require 'index.view.php';
