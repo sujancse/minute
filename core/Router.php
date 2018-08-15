@@ -13,8 +13,8 @@ class Router
     /**
      * Fetch the uri and controller for GET request.
      *
-     * @param  string
-     * @param  file
+     * @param  $uri
+     * @param  $controller
      */
     public function get($uri, $controller)
     {
@@ -24,8 +24,8 @@ class Router
     /**
      * Fetch the uri and controller for POST request.
      *
-     * @param  string
-     * @param  file
+     * @param  $uri
+     * @param  $controller
      */
     public function post($uri, $controller)
     {
@@ -51,16 +51,40 @@ class Router
     /**
      * Direct the traffic to specified uri.
      *
-     * @param  uri
+     * @param  $uri request uri string
+     * @param  $requestType
      *
-     * @return file
+     * @throws Exception
      */
     public function direct($uri, $requestType)
     {
         if (array_key_exists($uri, $this->routes[$requestType])) {
-            return $this->routes[$requestType][$uri];
+            return $this->callAction(
+                ...explode('@', $this->routes[$requestType][$uri])
+            );
         }
 
         throw new Exception('No routes found with the uri '.$uri, 404);
+    }
+
+    /**
+     * Get the controller and call the action.
+     *
+     * @param $controller
+     * @param $action
+     *
+     * @return string
+     *
+     * @throws Exception
+     */
+    public function callAction($controller, $action)
+    {
+        $controller = new $controller();
+
+        if (!method_exists($controller, $action)) {
+            throw new Exception("{$controller} has no method {$action}");
+        }
+
+        return $controller->$action();
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
-$router->get('', 'controllers/home.php');
-$router->get('about', 'controllers/about.php');
-$router->post('add-name', 'controllers/add-name.php');
+$router->get('', 'PagesController@home');
+$router->get('about', 'PagesController@about');
+$router->get('users', 'UsersController@index');
+$router->post('users', 'UsersController@store');

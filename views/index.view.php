@@ -1,13 +1,6 @@
 <?php require 'partials/header.php'; ?>
-<h2>List of Todos</h2>
 
-<ul>
-    <?php foreach ($todos as $todo): ?>
-        <?php echo "<li>$todo->title; </li>"; ?>
-    <?php endforeach; ?>
-</ul>
-
-<h2>Lists of Names</h2>
+<h2>Lists of Users</h2>
 <ul>
     <?php foreach ($users as $user): ?>
         <?php echo "<li>$user->name</li>"; ?>
@@ -18,7 +11,7 @@
 
 <h2>Add Name</h2>
 
-<form action="/add-name" method="POST" accept-charset="utf-8">
+<form action="/users" method="POST" accept-charset="utf-8">
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" name="name" class="form-control">
