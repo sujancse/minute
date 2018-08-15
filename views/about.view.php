@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>About us</title>
-</head>
-<body>
+<?php require 'partials/header.php'; ?>
     <h2>About Us</h2>
-</body>
-</html>
+<?php require 'partials/footer.php'; ?>
