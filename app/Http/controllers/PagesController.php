@@ -7,6 +7,10 @@ namespace App\Http\Controllers;
  */
 class PagesController
 {
+    public function __construct()
+    {
+    }
+
     public function home()
     {
         return view('home');

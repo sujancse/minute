@@ -92,6 +92,35 @@ class Router
             throw new Exception("{$controller} has no method {$action}");
         }
 
-        return $controller->$action();
+        $params = $this->getParameters($controller, $action);
+
+        return $controller->$action(...$params);
+    }
+
+    /**
+     * Get resolved parameter of controller method.
+     *
+     * @param $controller
+     * @param $action
+     *
+     * @return array
+     */
+    public function getParameters($controller, $action)
+    {
+        $reflection = new \ReflectionMethod($controller, $action);
+        $reflector = new \ReflectionClass($controller);
+
+        $params = $reflection->getParameters();
+
+        $container = new Container();
+        $dependencies = $container->getDependencies($params);
+
+        $params = [];
+
+        foreach ($dependencies as $key => $value) {
+            $params[] = $value;
+        }
+
+        return $params;
     }
 }
