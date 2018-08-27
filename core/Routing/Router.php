@@ -2,6 +2,8 @@
 
 namespace Core\Routing;
 
+use Core\Container;
+
 /**
  * Route handler.
  */
@@ -82,7 +84,9 @@ class Router
     public function callAction($controller, $action)
     {
         $controller = "App\\Http\\Controllers\\{$controller}";
-        $controller = new $controller();
+        $container = new Container();
+        $container->set($controller);
+        $controller = $container->get($controller);
 
         if (!method_exists($controller, $action)) {
             throw new Exception("{$controller} has no method {$action}");
