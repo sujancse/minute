@@ -5,7 +5,7 @@
             "Core\\": "core/"
         },
         "files": [
-            "core/helper.php"
+            "core/Helpers/helper.php"
         ]
     }
 }
