@@ -68,7 +68,7 @@ class Router
             );
         }
 
-        throw new Exception('No routes found with the uri '.$uri, 404);
+        throw new \Exception('No routes found with the uri '.$uri, 404);
     }
 
     /**

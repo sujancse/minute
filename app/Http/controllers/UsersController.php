@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Core\Application;
+use Core\Database\ORM;
 use Core\Requests\Request;
 
 /**
@@ -16,14 +16,14 @@ class UsersController
 
     public function index()
     {
-        $users = Application::get('database')->getAll('users');
+        $users = ORM::getAll('users');
 
         return view('index', compact('users'));
     }
 
     public function store(Request $request)
     {
-        Application::get('database')->insert('users', [
+        ORM::create('users', [
             'name' => $request->name,
         ]);
 

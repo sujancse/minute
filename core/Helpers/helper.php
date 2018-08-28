@@ -40,3 +40,11 @@ function redirect($path)
 {
     header("Location: /{$path}");
 }
+
+/**
+ * Application instance.
+ */
+function app()
+{
+    return require 'core/app.php';
+}

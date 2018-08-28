@@ -7,7 +7,7 @@ namespace Core;
  */
 class Application
 {
-    protected static $registry = [];
+    protected $registry = [];
 
     /**
      * Binding values to DI container.
@@ -15,9 +15,9 @@ class Application
      * @param  sting
      * @param  mixed
      */
-    public static function bind($key, $value)
+    public function bind($key, $value)
     {
-        static::$registry[$key] = $value;
+        $this->registry[$key] = $value;
     }
 
     /**
@@ -29,10 +29,10 @@ class Application
      */
     public function get($key)
     {
-        if (!array_key_exists($key, static::$registry)) {
+        if (!array_key_exists($key, $this->registry)) {
             throw new Exception("No data found with {$key}");
         }
 
-        return static::$registry[$key];
+        return $this->registry[$key];
     }
 }
