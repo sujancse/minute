@@ -1,4 +1,4 @@
-PHP MVC Framework from scratch
+# PHP MVC Framework from scratch
 
 ## Installation
 
@@ -6,4 +6,4 @@ PHP MVC Framework from scratch
 #### In project root run `php -S 127.0.0.1:8000`
 
 
-You are good to go!
+# You are good to go!
