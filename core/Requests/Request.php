@@ -31,7 +31,7 @@ class Request
      *
      * @return string
      */
-    public function method()
+    public static function method()
     {
         return $_SERVER['REQUEST_METHOD'];
     }

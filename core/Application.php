@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Exception;
+
 /**
  * Application dependency injection container.
  */
@@ -12,7 +14,7 @@ class Application
     /**
      * Binding values to DI container.
      *
-     * @param  sting
+     * @param  string
      * @param  mixed
      */
     public function bind($key, $value)
@@ -23,9 +25,10 @@ class Application
     /**
      * Get value from DI container by key.
      *
-     * @param  string
+     * @param string
      *
      * @return mixed
+     * @throws Exception
      */
     public function get($key)
     {

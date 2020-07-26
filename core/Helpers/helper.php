@@ -7,10 +7,25 @@
  *
  * @return mixed
  */
-function dd($data)
+function dd(...$data)
+{
+    echo "<pre>";
+    var_dump($data);
+    echo "</pre>";
+    die();
+}
+
+/**
+ * Get the data dump.
+ *
+ * @param  $data
+ *
+ * @return mixed
+ */
+function dump($data)
 {
     echo '<pre>';
-    die(var_dump($data));
+    var_dump($data);
     echo '</pre>';
 }
 

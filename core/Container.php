@@ -2,6 +2,11 @@
 
 namespace Core;
 
+use Closure;
+use Exception;
+use ReflectionClass;
+use ReflectionException;
+
 /**
  * Class Container.
  */
@@ -59,7 +64,8 @@ class Container
             return $concrete($this, $parameters);
         }
 
-        $reflector = new \ReflectionClass($concrete);
+        $reflector = new ReflectionClass($concrete);
+
         // check if class is instantiable
         if (!$reflector->isInstantiable()) {
             throw new Exception("Class {$concrete} is not instantiable");

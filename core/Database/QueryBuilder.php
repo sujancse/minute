@@ -22,13 +22,17 @@ class QueryBuilder
     /**
      * Get all data from table.
      *
-     * @return obj
+     * @return object
      */
     public function getAll($table)
     {
         $statement = $this->pdo->prepare("select * from {$table}");
 
-        $statement->execute();
+        try {
+            $statement->execute();
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+        }
 
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }

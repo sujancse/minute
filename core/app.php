@@ -8,8 +8,12 @@ $app = new Application();
 
 $app->bind('config', require 'config/config.php');
 
-$app->bind('database', new QueryBuilder(
-    Connection::make($app->get('config')['database'])
-));
+try {
+    $app->bind('database', new QueryBuilder(
+        Connection::make($app->get('config')['database'])
+    ));
+} catch (Error | Exception $exception) {
+    echo $exception->getMessage();
+}
 
 return $app;

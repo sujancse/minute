@@ -2,6 +2,7 @@
 
 namespace Core\Database;
 
+use Exception;
 use PDO;
 
 /**
@@ -19,7 +20,8 @@ class Connection
                 $config['options']
             );
         } catch (Exception $e) {
-            dd($e->getMessage());
+            dump($e->getMessage());
+            dd($e->getTraceAsString());
         }
     }
 }

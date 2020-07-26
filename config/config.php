@@ -3,7 +3,7 @@
 return [
     'database' => [
         'connection' => 'mysql:host=127.0.0.1',
-        'dbname' => 'todos',
+        'dbname' => 'todo',
         'username' => 'root',
         'password' => '',
         'options' => [

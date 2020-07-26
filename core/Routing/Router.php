@@ -3,6 +3,9 @@
 namespace Core\Routing;
 
 use Core\Container;
+use Core\Requests\Request;
+use Exception;
+use ReflectionException;
 
 /**
  * Route handler.
@@ -41,7 +44,7 @@ class Router
      *
      * @param  $file
      *
-     * @return $router
+     * @return Router $router
      */
     public static function load($file)
     {
@@ -55,20 +58,25 @@ class Router
     /**
      * Direct the traffic to specified uri.
      *
-     * @param  $uri request uri string
+     * @param  $uri string
      * @param  $requestType
      *
+     * @return string
      * @throws Exception
      */
     public function direct($uri, $requestType)
     {
+        if (empty($uri)) {
+            $uri = '/';
+        }
+
         if (array_key_exists($uri, $this->routes[$requestType])) {
             return $this->callAction(
                 ...explode('@', $this->routes[$requestType][$uri])
             );
         }
 
-        throw new \Exception('No routes found with the uri '.$uri, 404);
+        throw new Exception('No routes found with the uri '.$uri, 404);
     }
 
     /**
@@ -104,6 +112,7 @@ class Router
      * @param $action
      *
      * @return array
+     * @throws ReflectionException
      */
     public function getParameters($controller, $action)
     {
